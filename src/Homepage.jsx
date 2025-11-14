@@ -9,6 +9,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import "./App.css";
+const API_URL = import.meta.env.VITE_API_URL;
+
+
 
 function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -35,7 +38,8 @@ function HomePage() {
     setLoadingCallback(true);
 
     try {
-      const res = await fetch("http://localhost:5000/api/callback/request", {
+      const res = await fetch(`${API_URL}/api/callback/request`, {
+
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(callbackData),
@@ -92,9 +96,8 @@ function HomePage() {
   const fetchNearbyHospitals = (position) => {
     const { latitude, longitude } = position.coords;
 
-    fetch(
-      `http://localhost:5000/api/hospitals?lat=${latitude}&lng=${longitude}`
-    )
+    fetch(`${API_URL}/api/hospitals?lat=${latitude}&lng=${longitude}`)
+
       .then((res) => res.json())
       .then((data) => {
         if (data.results) {
@@ -119,9 +122,8 @@ function HomePage() {
   const fetchNearbyAmbulances = (position) => {
     const { latitude, longitude } = position.coords;
 
-    fetch(
-      `http://localhost:5000/api/ambulances?lat=${latitude}&lng=${longitude}`
-    )
+    fetch(`${API_URL}/api/ambulances?lat=${latitude}&lng=${longitude}`)
+
       .then((res) => res.json())
       .then((data) => {
         if (data.results) {
@@ -320,7 +322,8 @@ function HomePage() {
               const { latitude, longitude } = position.coords;
 
               // 2️⃣ Send location to backend
-              await fetch("http://localhost:5000/api/sos", {
+           await fetch(`${API_URL}/api/sos`, {
+
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ latitude, longitude }),
