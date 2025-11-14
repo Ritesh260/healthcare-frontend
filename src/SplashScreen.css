@@ -1,3 +1,4 @@
+/* Splash Container */
 .splash-container {
   position: fixed;
   top: 0;
@@ -10,20 +11,76 @@
   justify-content: center;
   align-items: center;
   z-index: 9999;
+  padding: 0 20px; /* thoda padding for small screens */
+  box-sizing: border-box;
 }
 
+/* Animation */
 .splash-animation {
   width: 300px;
   height: 300px;
 }
 
+/* Splash Text */
 .splash-text {
   margin-top: 20px;
   font-size: 2rem;
   font-weight: bold;
   color: #000; /* SEHAT black */
+  text-align: center; /* center text */
 }
 
+/* Accent color */
 .splash-text .accent {
   color: #ff0000; /* ambulance red accent */
+}
+
+/* Responsive Media Queries */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .splash-animation {
+    width: 250px;
+    height: 250px;
+  }
+
+  .splash-text {
+    font-size: 1.8rem;
+  }
+
+  .splash-text p {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .splash-animation {
+    width: 200px;
+    height: 200px;
+  }
+
+  .splash-text {
+    font-size: 1.5rem;
+  }
+
+  .splash-text p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Extra small mobile */
+@media (max-width: 480px) {
+  .splash-animation {
+    width: 150px;
+    height: 150px;
+  }
+
+  .splash-text {
+    font-size: 1.2rem;
+  }
+
+  .splash-text p {
+    font-size: 0.8rem;
+  }
 }

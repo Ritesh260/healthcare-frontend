@@ -38,7 +38,7 @@ function HomePage() {
     setLoadingCallback(true);
 
     try {
-      const res = await fetch(`${API_URL}/api/callback/request`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/callback/request`, {
 
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -96,7 +96,7 @@ function HomePage() {
   const fetchNearbyHospitals = (position) => {
     const { latitude, longitude } = position.coords;
 
-    fetch(`${API_URL}/api/hospitals?lat=${latitude}&lng=${longitude}`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/hospitals?lat=${latitude}&lng=${longitude}`)
 
       .then((res) => res.json())
       .then((data) => {
@@ -122,7 +122,7 @@ function HomePage() {
   const fetchNearbyAmbulances = (position) => {
     const { latitude, longitude } = position.coords;
 
-    fetch(`${API_URL}/api/ambulances?lat=${latitude}&lng=${longitude}`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/ambulances?lat=${latitude}&lng=${longitude}`)
 
       .then((res) => res.json())
       .then((data) => {
@@ -267,7 +267,7 @@ function HomePage() {
       {/* Who We Are */}
       <section id="about" className="who-we-are">
         <div className="about-image">
-          <img src="https://i.ibb.co/xFZV7sz/ambulance.jpg" alt="Ambulance" />
+          <img src="public/Images/medical.jpg" alt="Ambulance" />
         </div>
         <div className="about-text">
           <h2>Who We Are</h2>
@@ -322,7 +322,7 @@ function HomePage() {
               const { latitude, longitude } = position.coords;
 
               // 2️⃣ Send location to backend
-           await fetch(`${API_URL}/api/sos`, {
+           await fetch(`${import.meta.env.VITE_API_URL}/api/sos`, {
 
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
